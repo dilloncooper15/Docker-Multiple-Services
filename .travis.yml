@@ -10,10 +10,10 @@ script:
   - docker run velveetacheese/dockermultipleservices-test npm test -- --coverage
 
 after_success:
-  - docker build -t velveetacheese/dockermultipleservices-client -f ./client .
-  - docker build -t velveetacheese/dockermultipleservices-nginx -f ./nginx .
-  - docker build -t velveetacheese/dockermultipleservices-server -f ./server .
-  - docker build -t velveetacheese/dockermultipleservices-worker -f ./worker .
+  - docker build -t velveetacheese/dockermultipleservices-client ./client
+  - docker build -t velveetacheese/dockermultipleservices-nginx ./nginx
+  - docker build -t velveetacheese/dockermultipleservices-server ./server
+  - docker build -t velveetacheese/dockermultipleservices-worker ./worker
 # Login to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Push images to DockerHub
