@@ -1,0 +1,23 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t velveetacheese/dockermultipleservices-test -f ./client/dev.Dockerfile ./client
+
+script:
+  - docker run velveetacheese/dockermultipleservices-test npm test -- --coverage
+
+after_success:
+  - docker build -t velveetacheese/dockermultipleservices-client ./client
+  - docker build -t velveetacheese/dockermultipleservices-nginx ./nginx
+  - docker build -t velveetacheese/dockermultipleservices-server ./server
+  - docker build -t velveetacheese/dockermultipleservices-worker ./worker
+# Login to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Push images to DockerHub
+  - docker push velveetacheese/dockermultipleservices-client
+  - docker push velveetacheese/dockermultipleservices-nginx
+  - docker push velveetacheese/dockermultipleservices-server
+  - docker push velveetacheese/dockermultipleservices-worker
