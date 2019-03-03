@@ -12,7 +12,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h1><Link to="/">Home</Link> <Link to="/otherpage">Other Page</Link></h1>
+            <h1><Link to="/">Home</Link> <Link to="/otherpage">Checkout Moby</Link></h1>
           </header>
           <div>
             <Route exact path="/" component={Fib} />
