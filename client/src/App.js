@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './docker_whale';
+import logo from './docker_whale.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
